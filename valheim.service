@@ -1,0 +1,13 @@
+[Unit]
+Description=open a valheim server
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/screen -s /bin/bash -dm -S valheim /bin/bash /root/valheim/my_start_server.sh
+ExecStop=/usr/bin/screen -S valheim -X stuff ^c
+KillMode=none
+WorkingDirectory=/root/valheim
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
